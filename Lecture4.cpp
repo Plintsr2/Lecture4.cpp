@@ -40,7 +40,36 @@ bool chceckCorrectnessOfSudoku(std::vector<int> vec){
     }
 
     //boxes
+    iterator = vec.begin();
+    iterator2=iterator;
+    sum=0;
+    while(iterator!=vec.end()){
 
+        std::vector<int> smalrow1(iterator,iterator+3);
+        std::vector<int> smalrow2(iterator+9,iterator+12);
+        std::vector<int> smalrow3(iterator+21,iterator+24);
+
+        for(int value:smalrow1){
+            sum+=value;
+        }
+        for(int value:smalrow2){
+            sum+=value;
+        }
+        for(int value:smalrow3){
+            sum+=value;
+        }
+        if(sum!=45){return false;}
+        sum=0;
+        iterator+=3;
+        if(iterator==vec.begin()+10){
+            iterator=vec.begin()+28;
+        }
+        if(iterator==vec.begin()+37){
+            iterator=vec.begin()+55;
+        }
+    }
+    std::cout << "all good";
+    return true;
 }
 bool isDigit(char a){
     if (a >= '0' && a <= '9') { return true; }else{
@@ -92,8 +121,8 @@ auto main() -> int{
 
 
     auto first = std::string("Hello there1");
-    file << first;
-    file.close();
+//    file << first;
+//    file.close();
 
 
 
